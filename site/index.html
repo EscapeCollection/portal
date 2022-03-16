@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape Collection</title>
+</head>
+<body>
+  <p id="output"></p>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const artId = urlParams.get('artId');
+    fetch(`https://zen-wilson-c2c505.netlify.app/api/artwork?artid=${artId}`, {})
+    .then(data => JSON.parse(data))
+    .then( data => {
+      document.getElementById('output').innerHTML = data
+      window.location = `https://webflow.com/website/Pass-URL-Parameters?artid=${data["Artwork ID"]}`
+    } ).catch(error => {
+    console.log('Error', error)
+    })
+  </script>
+</body>
+</html>
