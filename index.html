@@ -30,7 +30,11 @@
       if (redirect) {
         window.location.href = response.url;
       }
+      console.log('r', response)
+      console.log('j', response.json())
+      return response.json()
     }).then(data => {
+      console.log('data', data)
       document.getElementById('output').innerHTML = data
     })
     // .then(data => data.json())
@@ -39,7 +43,7 @@
       // window.location = `https://webflow.com/website/Pass-URL-Parameters?artid=${data["Artwork ID"]}`
     // } )
     .catch(error => {
-    console.log('Error', error)
+      console.log('Error', error)
     })
   </script>
 </body>
