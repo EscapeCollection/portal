@@ -21,11 +21,12 @@
       },
       redirect: 'follow', // manual, *follow, error
     })
-    .then(data => data.json())
-    .then( data => {
-      document.getElementById('output').innerHTML = data
-      window.location = `https://webflow.com/website/Pass-URL-Parameters?artid=${data["Artwork ID"]}`
-    } ).catch(error => {
+    // .then(data => data.json())
+    // .then( data => {
+      // document.getElementById('output').innerHTML = data
+      // window.location = `https://webflow.com/website/Pass-URL-Parameters?artid=${data["Artwork ID"]}`
+    // } )
+    .catch(error => {
     console.log('Error', error)
     })
   </script>
