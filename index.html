@@ -26,7 +26,7 @@
     })
     .then(response => {
       // `response.redirected` always returns false
-      //if (response.redirected) {
+      // if (response.redirected) {
       if (redirect) {
         window.location.href = response.url;
       }
@@ -35,11 +35,6 @@
       console.log('data', data)
       document.getElementById('output').innerHTML = data
     })
-    // .then(data => data.json())
-    // .then( data => {
-      // document.getElementById('output').innerHTML = data
-      // window.location = `https://webflow.com/website/Pass-URL-Parameters?artid=${data["Artwork ID"]}`
-    // } )
     .catch(error => {
       console.log('Error', error)
     })
