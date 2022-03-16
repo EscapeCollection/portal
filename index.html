@@ -24,10 +24,10 @@
       redirect: 'manual', // manual, *follow, error
     })
     .then(response => {
-      console.log(response, response.redirected)
-      if (response.redirected) {
+      // `response.redirected` always returns false
+      //if (response.redirected) {
         window.location = response.url;
-      }
+      // }
     })
     // .then(data => data.json())
     // .then( data => {
