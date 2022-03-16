@@ -25,16 +25,16 @@
       redirect: 'manual', // manual, *follow, error
     })
     .then(response => {
+
+      let data = await response.json();
       // `response.redirected` always returns false
       // if (response.redirected) {
-      if (redirect) {
-        window.location.href = response.url;
-      }
-      return response.json()
-      .then(data => {
-        console.log('data', data)
-        document.getElementById('output').innerHTML = data
-      })
+      // if (redirect) {
+        // window.location.href = response.url;
+      // }
+
+      console.log('data', data)
+      document.getElementById('output').innerHTML = data
     })
     .catch(error => {
       console.log('Error', error)
