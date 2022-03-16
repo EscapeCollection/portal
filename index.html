@@ -13,7 +13,14 @@
     const artId = urlParams.get('artid');
     const fetchUrl = `https://zen-wilson-c2c505.netlify.app/api/artwork?artid=${artId}`
     console.log(urlParams, artId, fetchUrl)
-    fetch(fetchUrl)
+    fetch(fetchUrl, {
+      method: 'GET',
+      mode: 'no-cors', // no-cors, *cors, same-origin
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      redirect: 'follow', // manual, *follow, error
+    })
     .then(data => data.json())
     .then( data => {
       document.getElementById('output').innerHTML = data
