@@ -29,9 +29,9 @@
       let data = await response.json();
       // `response.redirected` always returns false
       // if (response.redirected) {
-      // if (redirect) {
-        // window.location.href = response.url;
-      // }
+      if (redirect === '1') {
+        window.location.href = response.url;
+      }
 
       console.log('data', data)
       document.getElementById('output').innerHTML = `<code><pre>${JSON.stringify(data, null, 2)}</pre></code>`
