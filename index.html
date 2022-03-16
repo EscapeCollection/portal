@@ -30,6 +30,8 @@
       // `response.redirected` always returns false
       // if (response.redirected) {
       if (redirect === '1') {
+        console.log(response)
+        console.log(response.url)
         window.location.href = response.url;
       }
 
