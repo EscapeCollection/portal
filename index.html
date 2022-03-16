@@ -14,7 +14,7 @@
     const fetchUrl = `https://zen-wilson-c2c505.netlify.app/api/artwork?artid=${artId}`
     console.log(urlParams, artId, fetchUrl)
     fetch(fetchUrl)
-    .then(data => JSON.parse(data))
+    .then(data => data.json())
     .then( data => {
       document.getElementById('output').innerHTML = data
       window.location = `https://webflow.com/website/Pass-URL-Parameters?artid=${data["Artwork ID"]}`
