@@ -30,8 +30,6 @@
       if (redirect) {
         window.location.href = response.url;
       }
-      console.log('r', response)
-      console.log('j', response.json())
       return response.json()
     }).then(data => {
       console.log('data', data)
