@@ -16,7 +16,9 @@
       method: 'GET',
       //mode: 'no-cors', // no-cors, *cors, same-origin
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type, Location',
       },
       redirect: 'follow', // manual, *follow, error
     })
