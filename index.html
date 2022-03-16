@@ -24,7 +24,7 @@
       },
       redirect: 'manual', // manual, *follow, error
     })
-    .then(response => {
+    .then(async (response) => {
 
       let data = await response.json();
       // `response.redirected` always returns false
