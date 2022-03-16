@@ -34,7 +34,7 @@
       // }
 
       console.log('data', data)
-      document.getElementById('output').innerHTML = `<code><pre>${JSON.stringify(data)}</pre></code>`
+      document.getElementById('output').innerHTML = `<code><pre>${JSON.stringify(data, null, 2)}</pre></code>`
     })
     .catch(error => {
       console.log('Error', error)
