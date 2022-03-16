@@ -10,8 +10,10 @@
   <p id="output"></p>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const artId = urlParams.get('artId');
-    fetch(`https://zen-wilson-c2c505.netlify.app/api/artwork?artid=${artId}`, {})
+    const artId = urlParams.get('artid');
+    const fetchUrl = `https://zen-wilson-c2c505.netlify.app/api/artwork?artid=${artId}`
+    console.log(urlParams, artId, fetchUrl)
+    fetch(fetchUrl)
     .then(data => JSON.parse(data))
     .then( data => {
       document.getElementById('output').innerHTML = data
