@@ -27,13 +27,14 @@
     .then(response => {
       // `response.redirected` always returns false
       // if (response.redirected) {
-      // if (redirect) {
-        // window.location.href = response.url;
-      // }
+      if (redirect) {
+        window.location.href = response.url;
+      }
       return response.json()
-    }).then(data => {
-      console.log('data', data)
-      //document.getElementById('output').innerHTML = data
+      .then(data => {
+        console.log('data', data)
+        document.getElementById('output').innerHTML = data
+      })
     })
     .catch(error => {
       console.log('Error', error)
