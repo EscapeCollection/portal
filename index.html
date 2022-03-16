@@ -26,7 +26,7 @@
     .then(response => {
       // `response.redirected` always returns false
       //if (response.redirected) {
-        window.location = response.url;
+        window.location.href = response.url;
       // }
     })
     // .then(data => data.json())
