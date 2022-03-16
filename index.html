@@ -10,7 +10,8 @@
   <p id="output"></p>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const artId = urlParams.get('artid');
+    const artId = urlParams.get('artid') || '';
+    const redirect = urlParams.get('redirect') || null;
     const fetchUrl = `https://zen-wilson-c2c505.netlify.app/api/artwork?artid=${artId}`
     fetch(fetchUrl, {
       method: 'GET',
@@ -26,8 +27,11 @@
     .then(response => {
       // `response.redirected` always returns false
       //if (response.redirected) {
+      if (redirect) {
         window.location.href = response.url;
-      // }
+      }
+    }).then(data => {
+      document.getElementById('output').innerHTML = data
     })
     // .then(data => data.json())
     // .then( data => {
