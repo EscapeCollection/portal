@@ -6,29 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Escape Collection</title>
 </head>
+
 <body>
-  <p id="output"></p>
+  <p id="output">
+    <!-- Render data in here -->
+  </p>
+
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const artId = urlParams.get('artid') || '';
     const redirect = urlParams.get('redirect') || null;
-    const fetchUrl = `https://zen-wilson-c2c505.netlify.app/api/artwork?artid=${artId}&redirect=${redirect}`
+
+    const fetchUrl = `https://escapecollection.netlify.app/api/artwork?artid=${artId}&redirect=${redirect}`
     fetch(fetchUrl, {
       method: 'GET',
-      //mode: 'no-cors', // no-cors, *cors, same-origin
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        //'Access-Control-Allow-Headers': 'Content-Type, Location',
-        //'Access-Control-Allow-Methods': 'GET, OPTION',
       },
       redirect: 'manual', // manual, *follow, error
     })
     .then(async (response) => {
-
-      // `response.redirected` always returns false
-      // if (response.redirected) {
-      if (redirect === '1') {
+      if (redirect === '1') { // `response.redirected` always returns false
         console.log(response)
         console.log(response.url)
         window.location.href = response.url;
@@ -42,5 +41,7 @@
       console.log('Error', error)
     })
   </script>
+
 </body>
+
 </html>
