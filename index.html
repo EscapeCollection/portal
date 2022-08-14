@@ -23,19 +23,15 @@
       redirect: 'manual', // manual, *follow, error
     })
     .then(async (response) => {
-      console.log("Redirected?", response.redirected);
       console.log(response)
+      if (!response.body) {
+        console.log("Not previewing");
+        return window.location.href = response.url;
+      }
       let data = await response.json();
       console.log('data', data)
-      if (data.message !== '') { // `response.redirected` always returns false
-        console.log("response has a body")
-        document.getElementById('output').innerHTML = `<code><pre>${JSON.stringify(data, null, 2)}</pre></code><br /><a href="${data.redirectingTo}">Keep going</a>`
-        return
-      }
-      console.log("Not previewing");
-      console.log(response)
-      // console.log(response.url)
-      // window.location.href = response.url;
+      document.getElementById('output').innerHTML = `<code><pre>${JSON.stringify(data, null, 2)}</pre></code><br /><a href="${data.redirectingTo}">Keep going</a>`
+      return
     })
     .catch(error => {
       console.log('Error', error)
