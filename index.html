@@ -24,11 +24,12 @@
     })
     .then(async (response) => {
       console.log("Redirected?", response.redirected);
+      console.log(response)
       let data = await response.json();
       console.log('data', data)
-      if (data !== '') { // `response.redirected` always returns false
+      if (data.message !== '') { // `response.redirected` always returns false
         console.log("response has a body")
-        document.getElementById('output').innerHTML = `<code><pre>${JSON.stringify(data, null, 2)}</pre></code>`
+        document.getElementById('output').innerHTML = `<code><pre>${JSON.stringify(data, null, 2)}</pre></code><br /><a href="${data.redirectingTo}">Keep going</a>`
         return
       }
       console.log("no body found");
