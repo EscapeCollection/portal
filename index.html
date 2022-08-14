@@ -13,12 +13,7 @@
   </p>
 
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const artId = urlParams.get('artid') || '';
-    const preview = urlParams.get('preview') || null;
-    const redirectTo = urlParams.get('redirect_to') || null;
-
-    const fetchUrl = `https://escapecollection.netlify.app/api/artwork?artid=${artId}&preview=${preview}&redirect_to=${redirectTo}`
+    const fetchUrl = `https://escapecollection.netlify.app/api/${window.location.search}`
     fetch(fetchUrl, {
       method: 'GET',
       headers: {
