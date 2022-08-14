@@ -15,9 +15,10 @@
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const artId = urlParams.get('artid') || '';
-    const redirect = urlParams.get('redirect') || null;
+    const preview = urlParams.get('preview') || null;
+    const redirectTo = urlParams.get('redirect_to') || null;
 
-    const fetchUrl = `https://escapecollection.netlify.app/api/artwork?artid=${artId}&redirect=${redirect}`
+    const fetchUrl = `https://escapecollection.netlify.app/api/artwork?artid=${artId}&preview=${preview}&redirect_to=${redirectTo}`
     fetch(fetchUrl, {
       method: 'GET',
       headers: {
@@ -27,15 +28,14 @@
       redirect: 'manual', // manual, *follow, error
     })
     .then(async (response) => {
-      if (redirect === '1') { // `response.redirected` always returns false
-        console.log(response)
-        console.log(response.url)
-        window.location.href = response.url;
+      if (preview === '1') { // `response.redirected` always returns false
+        let data = await response.json();
+        console.log('data', data)
+        return document.getElementById('output').innerHTML = `<code><pre>${JSON.stringify(data, null, 2)}</pre></code>`
       }
-      let data = await response.json();
-
-      console.log('data', data)
-      document.getElementById('output').innerHTML = `<code><pre>${JSON.stringify(data, null, 2)}</pre></code>`
+      console.log(response)
+      console.log(response.url)
+      window.location.href = response.url;
     })
     .catch(error => {
       console.log('Error', error)
